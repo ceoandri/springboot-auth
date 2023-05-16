@@ -25,3 +25,29 @@
     </dependency>
     ```
 3. Run `mvn clean install` inside your project directory
+
+## How To Use
+```
+@RestController
+@RequestMapping("/api")
+public class ApiController {
+
+    @GetMapping("/1")
+    @Authorize
+    public ResponseEntity<String> apiSample(HttpServletRequest request) {
+        return ResponseEntity.ok("Hello world!");
+    }
+    
+    @PostMapping("/2")
+    @Authorize(
+			roles = {"SUPER ADMIN", "ADMIN"}, 
+			module = "API", 
+			accessTypes = {"CREATE", "UPDATE"})
+    public ResponseEntity<String> apiSample(HttpServletRequest request, ModelRequest item) {
+        return ResponseEntity.ok("Hello world!");
+    }
+	
+}
+```
+it's mandatory to always put `HttpServletRequest` as a first parameter 
+roles, module, and accessTypes are optional. but, if you want to set the accessType, you need to set module

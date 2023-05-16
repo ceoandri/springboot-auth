@@ -27,6 +27,34 @@
 3. Run `mvn clean install` inside your project directory
 
 ## How To Use
+1. Create configuration file as catcher
+```
+@Configuration
+@ComponentScan("gratis.contoh.auth.catcher")
+@EnableAspectJAutoProxy
+public class AuthCatcherConfiguration {
+
+}
+```
+
+2. Create configuration file that implement `AuthorizeValidator`.
+```
+@Configuration
+public class AuthValidatorConfiguration implements AuthorizeValidator {
+
+    @Override
+    public Boolean verify(String headerValue, String[] roles, String module, String[] accessType) {
+        // put your logic here
+    }
+
+}
+```
+    - `headerValue` contains token or something that you passed from FE to be authorize.
+    - `roles` contains list of role or []
+    - `module` contains module 
+    - `accessType` contains list of access type or []
+
+3. Use annotation `@Authorize` in your method
 ```
 @RestController
 @RequestMapping("/api")

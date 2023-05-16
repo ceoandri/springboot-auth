@@ -40,9 +40,9 @@ public class ApiController {
     
     @PostMapping("/2")
     @Authorize(
-			roles = {"SUPER ADMIN", "ADMIN"}, 
-			module = "API", 
-			accessTypes = {"CREATE", "UPDATE"})
+	roles = {"SUPER ADMIN", "ADMIN"}, 
+	module = "API", 
+	accessTypes = {"CREATE", "UPDATE"})
     public ResponseEntity<String> apiSample(HttpServletRequest request, ModelRequest item) {
         return ResponseEntity.ok("Hello world!");
     }

@@ -44,15 +44,15 @@ public class AuthValidatorConfiguration implements AuthorizeValidator {
 
     @Override
     public Boolean verify(String headerValue, String[] roles, String module, String[] accessType) {
-        // put your logic here
+        // put your logic here. just return true when passed and false when failed
     }
 
 }
 ```
-    - `headerValue` contains token or something that you passed from FE to be authorize.
-    - `roles` contains list of role or []
-    - `module` contains module 
-    - `accessType` contains list of access type or []
+- `headerValue` contains token or something that you passed from FE to be authorize.
+- `roles` contains list of role or []
+- `module` contains module 
+- `accessType` contains list of access type or []
 
 3. Use annotation `@Authorize` in your method
 ```

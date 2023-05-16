@@ -49,7 +49,7 @@ public class AuthValidatorConfiguration implements AuthorizeValidator {
 
 }
 ```
-- `headerValue` contains token or something that you passed from FE to be authorize.
+- `headerValue` contains token or something that you passed from FE that need to be authorize.
 - `roles` contains list of role or []
 - `module` contains module 
 - `accessType` contains list of access type or []

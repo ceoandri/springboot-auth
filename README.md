@@ -6,23 +6,23 @@
 
 ## How to use this library for your maven project
 1. Add this repository setting in your `pom.xml`
-    ```xml
-    <repositories>
-        <repository>
-            <id>repo-contoh-gratis</id>
-            <name>repo-contoh-gratis</name>
-            <url>http://repo.contoh.gratis/repository/maven-public/</url>
-        </repository>
-    </repositories>
-    ```
+```xml
+<repositories>
+	<repository>
+		<id>repo-contoh-gratis</id>
+		<name>repo-contoh-gratis</name>
+		<url>http://repo.contoh.gratis/repository/maven-public/</url>
+	</repository>
+</repositories>
+```
 2. Add the dependency you need inside `pom.xml`.
-    ```xml
-    <dependency>
-        <groupId>gratis.contoh</groupId>
-        <artifactId>auth</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    ```
+```xml
+<dependency>
+	<groupId>gratis.contoh</groupId>
+	<artifactId>auth</artifactId>
+	<version>1.0.0</version>
+</dependency>
+```
 3. Run `mvn clean install` inside your project directory
 
 ## How To Use

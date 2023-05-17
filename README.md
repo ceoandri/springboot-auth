@@ -9,9 +9,9 @@
     ```xml
     <repositories>
         <repository>
-            <id>nexus-solecode-snapshots</id>
-            <name>nexus-solecode-snapshots</name>
-            <url>https://nexus.solecode.tech/repository/maven-snapshots/</url>
+            <id>repo-contoh-gratis</id>
+            <name>repo-contoh-gratis</name>
+            <url>http://repo.contoh.gratis/repository/maven-snapshots/</url>
         </repository>
     </repositories>
     ```

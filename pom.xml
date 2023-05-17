@@ -9,12 +9,12 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>auth</name>
-  <url>http://contoh.gratis</url>
+  <url>http://repo.contoh.gratis</url>
   
   <distributionManagement>
     <repository>
-      <id>nexus-solecode-snapshots</id>
-      <url>https://nexus.solecode.tech/repository/maven-snapshots/</url>
+      <id>repo-contoh-gratis</id>
+      <url>http://repo.contoh.gratis/repository/maven-snapshots/</url>
     </repository>
   </distributionManagement>
 
@@ -104,8 +104,8 @@
             </execution>
           </executions>
           <configuration>
-           	<serverId>nexus-solecode-snapshots</serverId>
-            <nexusUrl>https://nexus.solecode.tech/</nexusUrl>
+           	<serverId>repo-contoh-gratis</serverId>
+            <nexusUrl>http://repo.contoh.gratis/</nexusUrl>
             <skipStaging>true</skipStaging>
           </configuration>
         </plugin>

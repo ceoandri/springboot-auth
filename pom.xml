@@ -9,12 +9,12 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>auth</name>
-  <url>http://repo.contoh.gratis</url>
+  <url>http://repo.contoh.gratis:81</url>
   
   <distributionManagement>
     <repository>
       <id>repo-contoh-gratis</id>
-      <url>http://repo.contoh.gratis/repository/maven-snapshots/</url>
+      <url>http://repo.contoh.gratis:81/repository/maven-snapshots/</url>
     </repository>
   </distributionManagement>
 
@@ -105,7 +105,7 @@
           </executions>
           <configuration>
            	<serverId>repo-contoh-gratis</serverId>
-            <nexusUrl>http://repo.contoh.gratis/</nexusUrl>
+            <nexusUrl>http://repo.contoh.gratis:81/</nexusUrl>
             <skipStaging>true</skipStaging>
           </configuration>
         </plugin>

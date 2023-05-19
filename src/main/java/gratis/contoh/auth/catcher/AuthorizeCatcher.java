@@ -42,12 +42,15 @@ public class AuthorizeCatcher {
 		String headerValue = request.getHeader(headerName);
 		
 		if (headerValue != null) {
+			if (this.validator.isAuthenticate(headerValue)) {
+				throw new UnauthenticateException("please login to access this resource");
+			}
+			
 			boolean res = authorizeHeader(authType, headerValue, roles, module, accessTypes);
 			
 			if (!res) {
 				throw new UnauthorizeException("you don't have permission to access this resource");
 			}
-				
 		} else {
 			throw new UnauthenticateException("please login to access this resource");
 		}
@@ -62,20 +65,20 @@ public class AuthorizeCatcher {
 		switch (authType) {
 			case AuthTypes.BEARER: {
 				if (token.startsWith("Bearer ")) {
-					return this.validator.verify(token.split(" ")[1], roles, module, accessTypes);				
+					return this.validator.isAuthorize(token.split(" ")[1], roles, module, accessTypes);				
 				} else {
 					return false;
 				}
 			}
 			case AuthTypes.BASIC: {
 				if (token.startsWith("Basic ")) {
-					return this.validator.verify(token.split(" ")[1], roles, module, accessTypes);
+					return this.validator.isAuthorize(token.split(" ")[1], roles, module, accessTypes);
 				} else {
 					return false;
 				}
 			}
 			default: {
-				return this.validator.verify(token.split(" ")[1], roles, module, accessTypes);
+				return this.validator.isAuthorize(token.split(" ")[1], roles, module, accessTypes);
 			}
 		}
 	}

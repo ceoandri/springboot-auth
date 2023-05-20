@@ -42,13 +42,13 @@ public class AuthCatcherConfiguration {
 public class AuthValidatorConfiguration implements AuthorizeValidator {
 
     @Override
-    public Mono<Boolean> isAuthenticate(String headerValue) {
-        // put your logic here. just return Mono.just(true) when passed and Mono.just(false) when failed
+    public Boolean isAuthenticate(String headerValue) {
+        // put your logic here. just return true when passed and false when failed
     }
     
     @Override
-    public Mono<Boolean> isAuthorize(String headerValue, String[] roles, String module, String[] accessType) {
-        // put your logic here. just return Mono.just(true) when passed and Mono.just(false) when failed
+    public Boolean isAuthorize(String headerValue, String[] roles, String module, String[] accessType) {
+        // put your logic here. just return true when passed and false when failed
     }
 
 }

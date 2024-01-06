@@ -1,7 +1,7 @@
 # springboot-auth
 
 ## Prerequisite
-1. Springboot v3.0.6
+1. Springboot v3.0.6 or later
 2. Java 17
  
 ## How to use this library for your maven project

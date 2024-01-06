@@ -9,9 +9,9 @@
 ```xml
 <repositories>
 	<repository>
-		<id>repo-contoh-gratis</id>
-		<name>repo-contoh-gratis</name>
-		<url>http://repo.contoh.gratis:81/repository/maven-public/</url>
+		<id>contoh-gratis</id>
+		<name>contoh-gratis</name>
+		<url>https://nexus.contoh.gratis/repository/maven-public/</url>
 	</repository>
 </repositories>
 ```
@@ -20,7 +20,7 @@
 <dependency>
 	<groupId>gratis.contoh</groupId>
 	<artifactId>auth</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.0</version>
 </dependency>
 ```
 3. Run `mvn clean install` inside your project directory
@@ -66,7 +66,7 @@ public class ApiController {
 
     @GetMapping("/1")
     @Authorize
-    public ResponseEntity<String> apiSample(HttpServletRequest request) {
+    public ResponseEntity<String> apiSample() {
         return ResponseEntity.ok("Hello world!");
     }
     
@@ -81,4 +81,4 @@ public class ApiController {
 	
 }
 ```
-it's mandatory to always put `HttpServletRequest` as a first parameter. `roles`, `module`, and `accessTypes` are optional. but, if you want to set the `accessType`, you need to set `module`
+`roles`, `module`, and `accessTypes` are optional. but, if you want to set the `accessType`, you need to set `module`

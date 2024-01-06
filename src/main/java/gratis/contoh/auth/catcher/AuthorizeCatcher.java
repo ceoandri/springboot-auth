@@ -76,7 +76,7 @@ public class AuthorizeCatcher {
 				}
 			}
 			default: {
-				return this.validator.isAuthorize(token.split(" ")[1], roles, module, accessTypes);
+				return this.validator.isAuthorize(token, roles, module, accessTypes);
 			}
 		}
 	}

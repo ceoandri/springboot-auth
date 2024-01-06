@@ -6,15 +6,15 @@
 
   <groupId>gratis.contoh</groupId>
   <artifactId>auth</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <name>auth</name>
-  <url>http://repo.contoh.gratis:81</url>
+  <url>https://nexus.contoh.gratis</url>
   
   <distributionManagement>
     <repository>
-      <id>repo-contoh-gratis</id>
-      <url>http://repo.contoh.gratis:81/repository/maven-snapshots/</url>
+      <id>contoh-gratis</id>
+      <url>https://nexus.contoh.gratis/repository/maven-releases/</url>
     </repository>
   </distributionManagement>
 
@@ -104,8 +104,8 @@
             </execution>
           </executions>
           <configuration>
-           	<serverId>repo-contoh-gratis</serverId>
-            <nexusUrl>http://repo.contoh.gratis:81/</nexusUrl>
+           	<serverId>contoh-gratis</serverId>
+            <nexusUrl>https://nexus.contoh.gratis/</nexusUrl>
             <skipStaging>true</skipStaging>
           </configuration>
         </plugin>

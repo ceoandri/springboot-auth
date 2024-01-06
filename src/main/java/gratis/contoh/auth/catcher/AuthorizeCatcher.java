@@ -7,6 +7,8 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import gratis.contoh.auth.annotation.Authorize;
 import gratis.contoh.auth.constant.AuthTypes;
@@ -18,22 +20,18 @@ import gratis.contoh.auth.service.AuthorizeValidator;
 @Component
 public class AuthorizeCatcher {
 	
-	@Pointcut("args(httpServletRequest,..)")
-	private void httpServletRequest(HttpServletRequest httpServletRequest) {}
-	
 	@Pointcut("@annotation(authorize)")
 	private void authorizeData(Authorize authorize) {}
 	
 	@Autowired
 	private AuthorizeValidator validator;
 	
-	@Before("authorizeData(authorize) && httpServletRequest(request)")
-	public void before(Authorize authorize, HttpServletRequest request) {
-		if (!(request instanceof HttpServletRequest)) {
-			throw new RuntimeException("request should be HttpServletRequest");
-		}
-		
-		String headerName = authorize.header();
+	@Before("authorizeData(authorize)")
+    public void before(Authorize authorize) throws UnauthenticateException, UnauthorizeException  {
+        HttpServletRequest request = 
+        		((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+
+        String headerName = authorize.header();
 		String authType = authorize.authType();
 		String[] roles = authorize.roles();
 		String module = authorize.module();
@@ -42,7 +40,7 @@ public class AuthorizeCatcher {
 		String headerValue = request.getHeader(headerName);
 		
 		if (headerValue != null) {
-			if (this.validator.isAuthenticate(headerValue)) {
+			if (!this.validator.isAuthenticate(headerValue)) {
 				throw new UnauthenticateException("please login to access this resource");
 			}
 			
@@ -54,7 +52,7 @@ public class AuthorizeCatcher {
 		} else {
 			throw new UnauthenticateException("please login to access this resource");
 		}
-	}
+    }
 	
 	private Boolean authorizeHeader(
 			String authType, 

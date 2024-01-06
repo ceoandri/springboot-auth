@@ -72,6 +72,11 @@ public class ApiController {
     
     @PostMapping("/2")
     @Authorize(
+	header = "Authorization", //The default value is Authorization
+	// The default value is Bearer, you can edit it with Basic or anything you want
+	// If you using custom name, the headerValue will as is from header value sent from FE
+	// i.e if you send token '123123 asdasd1 124123', the header value will filled with '123123 asdasd1 124123'
+	authType = "Bearer", 
 	roles = {"SUPER ADMIN", "ADMIN"}, 
 	module = "API", 
 	accessTypes = {"CREATE", "UPDATE"})
@@ -81,4 +86,4 @@ public class ApiController {
 	
 }
 ```
-`roles`, `module`, and `accessTypes` are optional. but, if you want to set the `accessType`, you need to set `module`
+`roles`, `module`, and `accessTypes` are optional.

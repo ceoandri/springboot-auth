@@ -26,19 +26,11 @@
 3. Run `mvn clean install` inside your project directory
 
 ## How To Use
-1. Create configuration file as catcher
+1. Create configuration file that implement `AuthorizeValidator`.
 ```
 @Configuration
 @ComponentScan("gratis.contoh.auth.catcher")
 @EnableAspectJAutoProxy
-public class AuthCatcherConfiguration {
-
-}
-```
-
-2. Create configuration file that implement `AuthorizeValidator`.
-```
-@Configuration
 public class AuthValidatorConfiguration implements AuthorizeValidator {
 
     @Override
@@ -58,7 +50,7 @@ public class AuthValidatorConfiguration implements AuthorizeValidator {
 - `module` contains module 
 - `accessType` contains list of access type or []
 
-3. Use annotation `@Authorize` in your method
+2. Use annotation `@Authorize` in your method
 ```
 @RestController
 @RequestMapping("/api")
